@@ -17,6 +17,12 @@
 Route::get('/', 'ProductController@show');
 Route::get('/orders', 'OrderController@show');
 
+Route::get('/product/add', 'ProductController@showAddForm');
+Route::post('/product/store', 'ProductController@store');
+Route::get('/product/update/form/{product}', 'ProductController@showUpdateForm');
+Route::post('/product/update/{product}', 'ProductController@update');
+Route::get('/product/delete/{product}', 'ProductController@destroy');
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');

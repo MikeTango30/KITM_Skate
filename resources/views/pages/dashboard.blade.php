@@ -4,7 +4,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mb-3 add-button">
-                    <div class="btn btn-primary"><a href="{{ url('/add-listing') }}">Naujas skelbimas</a></div>
+                    <div class="btn btn-primary"><a href="{{ url('/product/add') }}">New product</a></div>
+                </div>
+                <div class="col-md-6 mb-3 add-button">
+                    <div class="btn btn-primary"><a href="{{ url('/category/add') }}">New category</a></div>
                 </div>
             </div>
             <div class="row">
@@ -23,19 +26,20 @@
                     </thead>
                     <tbody>
                     <tr>
-                        @foreach($listings as $listing)
-                            <td>{{$listing->category_name}}</td>
-                            <td>{{$listing->listing_title}}</td>
-                            <td>{{$listing->description}}</td>
-                            <td>{{$listing->price}}</td>
-                            <td>{{$listing->location}}</td>
-                            <th><a href="/listing/update/form/{{$listing->listingId}}" class="btn btn-warning">Koreguoti</a></th>
-                            <th><a href="/listing/delete/{{$listing->listingId}}" class="btn btn-danger">Šalinti</a></th>
+                        @foreach($products as $product)
+                            <td>{{$product->category_title}}</td>
+                            <td>{{$product->product_title}}</td>
+                            <td>{{$product->img}}</td>
+                            <td>{{$product->description}}</td>
+                            <td>{{$product->price}}</td>
+                            <td>{{$product->total}}</td>
+                            <th><a href="/product/update/form/{{$product->productId}}" class="btn btn-warning">Edit</a></th>
+                            <th><a href="/product/delete/{{$product->productId}}" class="btn btn-danger">Remove</a></th>
                     </tr>
                     @endforeach
                     </tbody>
                 </table>
-                {{ $listings->links() }}
+                {{ $products->links() }}
             </div>
         </div>
     </div>

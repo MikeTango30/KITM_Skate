@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -20,5 +22,37 @@ class ProductController extends Controller
             ->simplePaginate(10);
 
         return view('pages.dashboard', compact('products'));
+    }
+
+    public function showAddForm()
+    {
+
+        $categories = Category::all();
+
+        return view('pages.add_product', compact('categories'));
+    }
+
+    public function store()
+    {
+        //TODO
+    }
+
+    public function showUpdateForm()
+    {
+        //TODO
+    }
+
+    public function update()
+    {
+        //TODO
+    }
+
+    public function destroy(Product $product)
+    {
+
+        $product->delete();
+
+        return redirect('/');
+
     }
 }
