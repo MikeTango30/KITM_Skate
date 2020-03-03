@@ -15,7 +15,6 @@
 
 
 Route::get('/', 'ProductController@show');
-Route::get('/orders', 'OrderController@show');
 
 Route::get('/product/add', 'ProductController@showAddForm');
 Route::post('/product/store', 'ProductController@store');
@@ -30,6 +29,7 @@ Route::get('/category/update/form/{category}', 'CategoryController@showUpdateFor
 Route::post('/category/update/{category}', 'CategoryController@update');
 Route::get('/category/delete/{category}', 'CategoryController@destroy');
 
+Route::get('/orders', 'OrderController@show');
 
 
 Auth::routes();
