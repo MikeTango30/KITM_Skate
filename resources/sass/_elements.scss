@@ -1,0 +1,6 @@
+.btn {
+  border-radius: 0;
+  a &:hover &:active {
+    color: #fff!important;
+  }
+}

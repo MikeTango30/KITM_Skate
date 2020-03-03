@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('total');
             $table->decimal('price');
             $table->string('img')->nullable();
-            $table->boolean('active');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

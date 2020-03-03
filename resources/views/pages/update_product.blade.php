@@ -13,16 +13,16 @@
             @endif
         </div>
         <div class="row add-new">
-            <h3>New Product</h3>
-            <form method="post" action="/product/store" class="p-5 bg-white w-100" enctype="multipart/form-data">
+            <h3>Update Product</h3>
+            <form method="post" action="/product/update/{{ $product->id }}" class="p-5 bg-white w-100" enctype="multipart/form-data">
                 @csrf
                 <div class="row form-group">
                     <div class="offset-md-3 col-md-6 mb-3 mb-md-0">
                         <label class="text-black" for="catName">Category Name</label>
-                        <select id="catName" name="catId" class="form-control">
-                            <option selected disabled value="Category">Choose category</option>
+                        <select id="catName" name="category_id" class="form-control">
+                            <option selected value="{{ $product->category_id }}">{{ ucfirst($currentCategory->category_title) }}</option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ ucfirst($category->category_title) }}</option>
+                                <option value="{{ $category->id}}">{{ ucfirst($category->category_title) }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -30,11 +30,11 @@
                 <div class="row form-group">
                     <div class="offset-md-3 col-md-6 mb-3 mb-md-0">
                         <label class="text-black" for="productTitle">Product title</label>
-                        <input type="text" id="productTitle" class="form-control" name="title">
+                        <input type="text" id="productTitle" class="form-control" name="product_title" value="{{ $product->product_title }}">
                     </div>
                     <div class="offset-md-3 col-md-6 mb-3 mb-md-0">
                         <label class="text-black" for="productDescription">Description</label>
-                        <input type="text" id="productDescription" class="form-control" name="description">
+                        <input type="text" id="productDescription" class="form-control" name="description" value="{{ $product->description }}">
                     </div>
                     <div class="form-group custom-file offset-md-3 col-md-6 mb-3 mb-md-0 my-2">
                         <input type="file" class="custom-file-input text-black" name="img" id="productImage" lang="lt">
@@ -44,18 +44,18 @@
                 <div class="row form-group">
                     <div class="offset-md-3 col-md-6 mb-3 mb-md-0">
                         <label class="text-black" for="price">Price</label>
-                        <input type="number" id="price" name="price" class="form-control">
+                        <input type="number" id="price" name="price" class="form-control" value="{{ $product->price }}">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="offset-md-3 col-md-6 mb-3 mb-md-0">
                         <label class="text-black" for="quantity">Quantity</label>
-                        <input type="text" id="quantity" name="quantity" class="form-control">
+                        <input type="text" id="quantity" name="total" class="form-control" value="{{ $product->total }}">
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="offset-md-3 col-md-6">
-                        <input type="submit" value="Add" class="btn btn-primary py-2 px-4 text-white">
+                        <input type="submit" value="Update" class="btn btn-primary py-2 px-4 text-white">
                     </div>
                 </div>
             </form>

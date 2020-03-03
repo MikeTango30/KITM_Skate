@@ -14,6 +14,7 @@
     <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="{{ url('styles/shards-dashboards.1.1.0.min.css') }}">
     <link rel="stylesheet" href="{{ url('styles/extras.1.1.0.min.css') }}">
     <script async defer src="{{ url('https://buttons.github.io/buttons.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"  >
 </head>
 <body class="h-100">
 <div class="container-fluid">
