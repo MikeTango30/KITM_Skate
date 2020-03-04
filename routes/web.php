@@ -30,7 +30,11 @@ Route::post('/category/update/{category}', 'CategoryController@update');
 Route::get('/category/delete/{category}', 'CategoryController@destroy');
 
 Route::get('/orders', 'OrderController@show');
+Route::get('/order/delete/{order}', 'OrderController@remove');
+Route::get('/order/update/form/{order}', 'OrderController@showUpdateStateForm');
+Route::post('/order/update/{order}', 'OrderController@updateState');
 
+Route::get('/logout', 'HomeController@logout');
 
 Auth::routes();
 

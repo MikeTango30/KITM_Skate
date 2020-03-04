@@ -1,4 +1,11 @@
 @extends('layouts/main')
+@section('header')
+    @component('_partials/header')
+        @slot('title')
+            <h3>New Product</h3>
+        @endslot
+    @endcomponent
+@stop
 @section('content')
     <div class="container">
         <div class="row errors">
@@ -13,7 +20,7 @@
             @endif
         </div>
         <div class="row add-new">
-            <h3>New Product</h3>
+            <div class="my-3">Today: {{ \Carbon\Carbon::now()->format('d-m-Y') }}</div>
             <form method="post" action="/product/store" class="p-5 bg-white w-100" enctype="multipart/form-data">
                 @csrf
                 <div class="row form-group">

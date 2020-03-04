@@ -1,6 +1,29 @@
 .btn {
-  border-radius: 0;
-  a &:hover &:active {
-    color: #fff!important;
-  }
+    border-radius: 0;
+
+    a &:hover &:active {
+        color: #fff !important;
+    }
+}
+
+.card {
+    border-radius: 0;
+
+    .card-text {
+        list-style: none;
+        padding-left: 0;
+    }
+}
+
+.product-image {
+    img {
+        max-width: 100px;
+        object-fit: contain;
+    }
+}
+
+.table {
+    td {
+        vertical-align: middle;
+    }
 }

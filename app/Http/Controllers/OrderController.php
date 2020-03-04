@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\OrderState;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -16,9 +17,12 @@ class OrderController extends Controller
     public function show()
     {
 
-        $orders = Order::select('*')->simplePaginate(10);
+        $orders = Order::select('*', \DB::raw("orders.id as orderId"))
+            ->join('order_states', 'orders.state_id', '=', 'order_states.id')
+            ->where('active', '=', true)
+            ->simplePaginate(10);
 
-        return view('pages.dashboard', compact('orders'));
+        return view('pages.orders', compact('orders'));
     }
 
     public function store(Request $request)
@@ -44,13 +48,20 @@ class OrderController extends Controller
     public function showUpdateStateForm(Order $order)
     {
 
-        return view('pages.update_order_state', compact('order'));
+        $states = OrderState::all();
+        $stateId = $order->getAttribute('id');
+        $currentState = OrderState::select('state')->find($stateId);
+
+        return view('pages.update_order_state', compact('order', 'states', 'currentState'));
     }
 
-    public function updateState(Order $order)
+    public function updateState(Request $request,Order $order)
     {
+        $validateData = $request->validate([
+           'state_id' => 'required'
+        ]);
 
-        Order::where('id', $order->getAttribute('id'))->update(['state' => $order->getAttribute('state')]);
+        Order::where('id', $order->getAttribute('id'))->update(['state_id' => $request->get('state_id')]);
 
         return redirect('/orders');
     }

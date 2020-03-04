@@ -1,6 +1,15 @@
 @extends('layouts/main')
+
+@section('header')
+    @component('_partials/header')
+        @slot('title')
+            <h3>Categories</h3>
+        @endslot
+    @endcomponent
+@stop
 @section('content')
         <div class="container">
+            <div class="my-3">Today: {{ \Carbon\Carbon::now()->format('d-m-Y') }}</div>
             <div class="row justify-content-center">
                 <div class="col-md-6 mb-3 mb-md-0">
                     <div class="row mt-5 my-2">

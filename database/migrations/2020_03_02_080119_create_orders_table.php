@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->json('user_info');
             $table->json('items');
             $table->decimal('total');
-            $table->string('state');
+            $table->integer('state_id');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

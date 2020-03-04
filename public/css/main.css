@@ -1,0 +1,27 @@
+.btn {
+  border-radius: 0;
+}
+
+a .btn:hover .btn:active {
+  color: #fff !important;
+}
+
+.card {
+  border-radius: 0;
+}
+
+.card .card-text {
+  list-style: none;
+  padding-left: 0;
+}
+
+.product-image img {
+  max-width: 100px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
