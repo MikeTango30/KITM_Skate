@@ -39,30 +39,14 @@ class ApiController extends Controller
      */
     public function show(Category $category)
     {
-        return ProductResource::collection(Product::with('category')->where('category_id', '=', $category->category_id)->paginate(10));
+        return ProductResource::collection(Product::with('category')->paginate(10));
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function showByCategory(Category $category) {
+
+        return ProductResource::collection(Product::with('category')->where('category_id', '=', $category->id)->paginate(10));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }

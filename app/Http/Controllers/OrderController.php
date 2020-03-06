@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\OrderState;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -17,9 +18,9 @@ class OrderController extends Controller
     public function show()
     {
 
-        $orders = Order::select('*', \DB::raw("orders.id as orderId"))
+        $orders = Order::select('*', DB::raw("orders.id as orderId"))
             ->join('order_states', 'orders.state_id', '=', 'order_states.id')
-            ->where('active', '=', true)
+            ->where('active', '=', 1)
             ->simplePaginate(10);
 
         return view('pages.orders', compact('orders'));
