@@ -37,9 +37,15 @@ class ApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show()
     {
         return ProductResource::collection(Product::with('category')->paginate(10));
+
+    }
+
+    public function showById(Product $product)
+    {
+        return new ProductResource(Product::with('category')->find($product->id));
 
     }
 
