@@ -13,4 +13,9 @@ class Order extends Model
         'state_id',
         'active'
     ];
+
+    public function state() {
+
+        return $this->hasOne(OrderState::class);
+    }
 }

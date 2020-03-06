@@ -9,4 +9,9 @@ class OrderState extends Model
     protected $fillable = [
         'state'
     ];
+
+    public function order() {
+
+        return $this->hasMany(Order::class);
+    }
 }
